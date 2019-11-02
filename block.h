@@ -19,16 +19,18 @@ class Block
         time_t timestamp;
 
         size_t hash;
+        size_t prev_hash;
 
-        Block(string);
+        Block(string,size_t);
         void print();
         bool valid();
 };
 
-Block::Block(string b)
+Block::Block(string b,size_t phash)
 {
     data = b;
     timestamp = time(0);
+    prev_hash = phash;
     hash= easy_hash(data+ctime(&timestamp));
 }
 
